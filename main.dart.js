@@ -40078,19 +40078,18 @@ uH(a,b){if(this.as!==a)return!1
 return(((a==="A"?this.x:this.y)&1)===0?"right":"left")===b},
 aag(a){var s
 try{$.ayQ().Dg("eval",['        (function() {\n          window.speechSynthesis.cancel();\n          function doSpeak(voices) {\n            var u = new SpeechSynthesisUtterance("'+a+'");\n            u.lang = "en-US";\n            u.rate = 0.90;\n            u.pitch = 1.35;\n            var femaleNames = ["Samantha","Victoria","Karen","Moira","Tessa","Fiona","Veena","Zoe","Susan","Female","Google US English"];\n            var femaleVoice = voices.find(function(v) {\n              return v.lang.startsWith("en") && femaleNames.some(function(n){ return v.name.includes(n); });\n            });\n            if (!femaleVoice) {\n              femaleVoice = voices.find(function(v){ return v.lang.startsWith("en"); });\n            }\n            if (femaleVoice) u.voice = femaleVoice;\n            window.speechSynthesis.speak(u);\n          }\n          var voices = window.speechSynthesis.getVoices();\n          if (voices && voices.length > 0) {\n            doSpeak(voices);\n          } else {\n            window.speechSynthesis.onvoiceschanged = function() {\n              doSpeak(window.speechSynthesis.getVoices());\n              window.speechSynthesis.onvoiceschanged = null;\n            };\n            setTimeout(function() {\n              var v2 = window.speechSynthesis.getVoices();\n              if (v2 && v2.length > 0) doSpeak(v2);\n            }, 200);\n          }\n        })();\n      '])}catch(s){}},
-u2(a){var s,r,q,p,o=this,n="love",m={}
-o.ax.push(o.Nw())
-m.a=!1
-o.aj(new A.aj5(m,o,a))
-m=m.a
-s=o.as==="A"
-r=s?o.x:o.y
-q=s?o.y:o.x
-if(m){m=r===0?n:""+r
-s=q===0?n:""+q
-p="Service Over, "+m+" "+s}else{m=r===0?n:""+r
-s=q===0?n:""+q
-p=m+" "+s}o.aag(p)},
+u2(a){var s,r,q,p,o,n=this,m="love",l={}
+n.ax.push(n.Nw())
+l.a=!1
+n.aj(new A.aj5(l,n,a))
+l=l.a
+s=n.as==="A"
+r=s?n.x:n.y
+q=s?n.y:n.x
+if(r===q)p=(r===0?m:""+r)+" all"
+else{s=r===0?m:""+r
+o=q===0?m:""+q
+p=s+" "+o}n.aag(l?"Service Over, "+p:p)},
 aaN(){if(this.ax.length===0)return
 this.aj(new A.ajr(this))},
 a8P(){var s=this.c
