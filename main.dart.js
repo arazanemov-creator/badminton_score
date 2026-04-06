@@ -40168,32 +40168,33 @@ else q=c
 r=new A.ab(q,new A.ajA(),A.a0(q).j("ab<1,y>")).bn(0,",")
 try{$.Wn().op("eval",["        (function() {\n          window.speechSynthesis.cancel();\n          var texts = ["+A.m(s)+"];\n          var langs = ["+A.m(r)+"];\n          var delayMs = "+b+';\n          function makeUtterance(text, lang, voices) {\n            var u = new SpeechSynthesisUtterance(text);\n            var isJp = lang === "ja";\n            u.lang = isJp ? "ja-JP" : "en-US";\n            u.rate = 0.90;\n            // iOS\u3068Android\u3067TTS\u306e\u6319\u52d5\u304c\u7570\u306a\u308b\u305f\u3081\u5206\u5c90\n            var isIos = /iPad|iPhone|iPod/.test(navigator.userAgent);\n            u.pitch = isJp\n              ? (isIos ? 1.1 : 1.1)\n              : (isIos ? 1.5 : 1.35);\n            u.volume = isJp ? (isIos ? 1.0 : 0.70) : 1.0;\n            if (isJp) {\n              var jpVoice = voices.find(function(v){ return v.lang.startsWith("ja"); });\n              if (jpVoice) u.voice = jpVoice;\n            } else {\n              var femaleNames = ["Samantha","Victoria","Karen","Moira","Tessa","Fiona","Veena","Zoe","Susan","Female","Google US English"];\n              var femaleVoice = voices.find(function(v) {\n                return v.lang.startsWith("en") && femaleNames.some(function(n){ return v.name.includes(n); });\n              });\n              if (!femaleVoice) femaleVoice = voices.find(function(v){ return v.lang.startsWith("en"); });\n              if (femaleVoice) u.voice = femaleVoice;\n            }\n            return u;\n          }\n          function speakAll(voices) {\n            if (texts.length === 0) return;\n            var u0 = makeUtterance(texts[0], langs[0], voices);\n            if (texts.length > 1) {\n              var fallbackMs = (texts[0].length * 80) + delayMs;\n              var fallbackTimer = setTimeout(function() {\n                if (!window._ttsSecondDone) {\n                  window._ttsSecondDone = true;\n                  window.speechSynthesis.speak(makeUtterance(texts[1], langs[1], voices));\n                }\n              }, fallbackMs);\n              u0.onend = function() {\n                if (!window._ttsSecondDone) {\n                  window._ttsSecondDone = true;\n                  clearTimeout(fallbackTimer);\n                  setTimeout(function() {\n                    window.speechSynthesis.speak(makeUtterance(texts[1], langs[1], voices));\n                  }, delayMs);\n                }\n              };\n            }\n            window._ttsSecondDone = false;\n            window.speechSynthesis.speak(u0);\n          }\n          var voices = window.speechSynthesis.getVoices();\n          if (voices && voices.length > 0) {\n            speakAll(voices);\n          } else {\n            var done = false;\n            window.speechSynthesis.onvoiceschanged = function() {\n              if (done) return;\n              done = true;\n              window.speechSynthesis.onvoiceschanged = null;\n              speakAll(window.speechSynthesis.getVoices());\n            };\n          }\n        })();\n      '])}catch(p){}},
 aar(a){return this.ND(a,0,null)},
-aas(a,b){var s
-try{$.Wn().op("eval",['        (function() {\n          window.speechSynthesis.cancel();\n          function doSpeak(voices) {\n            var u = new SpeechSynthesisUtterance("'+a+'");\n            var isIos = /iPad|iPhone|iPod/.test(navigator.userAgent);\n            u.lang = "en-US";\n            u.rate = 0.90;\n            u.pitch = isIos ? 1.5 : 1.35;\n            u.volume = 1.0;\n            var femaleNames = ["Samantha","Victoria","Karen","Moira","Tessa","Fiona","Veena","Zoe","Susan","Female","Google US English"];\n            var femaleVoice = voices.find(function(v) {\n              return v.lang.startsWith("en") && femaleNames.some(function(n){ return v.name.includes(n); });\n            });\n            if (!femaleVoice) femaleVoice = voices.find(function(v){ return v.lang.startsWith("en"); });\n            if (femaleVoice) u.voice = femaleVoice;\n            var played = false;\n            function playAudio() {\n              if (played) return;\n              played = true;\n              var audio = (window._audioCache && window._audioCache["'+b+'"])\n                  ? window._audioCache["'+b+'"]\n                  : new Audio("'+b+'");\n              audio.currentTime = 0;\n              audio.volume = isIos ? 1.0 : 0.3;\n              audio.play().catch(function(e){ console.log("audio error:", e); });\n            }\n            // onend\u3067\u78ba\u5b9f\u306b\u691c\u77e5\n            u.onend = function() { setTimeout(playAudio, 500); };\n            // fallback: \u6587\u5b57\u6570\xd770ms + 1\u79d2\u5f8c\u306b\u5f37\u5236\u518d\u751f\n            var fallbackMs = (u.text.length * 70) + 1000;\n            setTimeout(playAudio, fallbackMs);\n            window.speechSynthesis.speak(u);\n          }\n          var voices = window.speechSynthesis.getVoices();\n          if (voices && voices.length > 0) {\n            doSpeak(voices);\n          } else {\n            var done = false;\n            window.speechSynthesis.onvoiceschanged = function() {\n              if (done) return; done = true;\n              window.speechSynthesis.onvoiceschanged = null;\n              doSpeak(window.speechSynthesis.getVoices());\n            };\n          }\n        })();\n      '])}catch(s){}},
+aas(a,b,c){var s
+try{$.Wn().op("eval",['        (function() {\n          window.speechSynthesis.cancel();\n          var isIos = /iPad|iPhone|iPod/.test(navigator.userAgent);\n          function doSpeak(voices) {\n            // 1. \u82f1\u8a9e\u30b9\u30b3\u30a2\u3092\u8aad\u307f\u4e0a\u3052\n            var u = new SpeechSynthesisUtterance("'+a+'");\n            u.lang = "en-US";\n            u.rate = 0.90;\n            u.pitch = isIos ? 1.5 : 1.35;\n            u.volume = 1.0;\n            var femaleNames = ["Samantha","Victoria","Karen","Moira","Tessa","Fiona","Veena","Zoe","Susan","Female","Google US English"];\n            var femaleVoice = voices.find(function(v) {\n              return v.lang.startsWith("en") && femaleNames.some(function(n){ return v.name.includes(n); });\n            });\n            if (!femaleVoice) femaleVoice = voices.find(function(v){ return v.lang.startsWith("en"); });\n            if (femaleVoice) u.voice = femaleVoice;\n            var secondPlayed = false;\n            function playSecond() {\n              if (secondPlayed) return;\n              secondPlayed = true;\n              if (isIos) {\n                // iOS\u306fTTS\u3067\u65e5\u672c\u8a9e\u3092\u8aad\u307f\u4e0a\u3052\n                var u2 = new SpeechSynthesisUtterance("'+c+'");\n                u2.lang = "ja-JP";\n                u2.rate = 0.90;\n                u2.pitch = 1.1;\n                u2.volume = 1.0;\n                var jpVoice = voices.find(function(v){ return v.lang.startsWith("ja"); });\n                if (jpVoice) u2.voice = jpVoice;\n                window.speechSynthesis.speak(u2);\n              } else {\n                // Android\u306fMP3\u30d5\u30a1\u30a4\u30eb\u3092\u518d\u751f\n                var audio = (window._audioCache && window._audioCache["'+b+'"])\n                    ? window._audioCache["'+b+'"]\n                    : new Audio("'+b+'");\n                audio.currentTime = 0;\n                audio.volume = 0.3;\n                audio.play().catch(function(e){ console.log("audio error:", e); });\n              }\n            }\n            u.onend = function() { setTimeout(playSecond, 500); };\n            var fallbackMs = (u.text.length * 70) + 1000;\n            setTimeout(playSecond, fallbackMs);\n            window.speechSynthesis.speak(u);\n          }\n          var voices = window.speechSynthesis.getVoices();\n          if (voices && voices.length > 0) {\n            doSpeak(voices);\n          } else {\n            var done = false;\n            window.speechSynthesis.onvoiceschanged = function() {\n              if (done) return; done = true;\n              window.speechSynthesis.onvoiceschanged = null;\n              doSpeak(window.speechSynthesis.getVoices());\n            };\n          }\n        })();\n      '])}catch(s){}},
 ab4(){var s
 if(this.cy)return
 this.cy=!0
 try{$.Wn().op("eval",['        (function() {\n          var files = [\n            "audio/right_female.mp3",\n            "audio/left_female.mp3",\n            "audio/right_male.mp3",\n            "audio/left_male.mp3"\n          ];\n          window._audioCache = window._audioCache || {};\n          files.forEach(function(f) {\n            var a = new Audio(f);\n            a.preload = "auto";\n            a.volume = 0.0001;\n            var p = a.play();\n            if (p) p.then(function(){ a.pause(); a.currentTime = 0; a.volume = 1.0; }).catch(function(){});\n            window._audioCache[f] = a;\n          });\n        })();\n      '])}catch(s){}},
-u6(a){var s,r,q,p,o,n,m,l,k,j=this,i="love",h={}
-j.ab4()
-j.ay.push(j.NC())
-h.a=!1
-j.aj(new A.aj7(h,j,a))
-h=h.a
-s=j.as==="A"
-r=s?j.x:j.y
-q=s?j.y:j.x
-if(r===q)p=(r===0?i:""+r)+" all"
-else{o=r===0?i:""+r
-n=q===0?i:""+q
-p=o+" "+n}m=h?"Service Over, "+p:p
-h=j.ax
-if(h==="en"){l=((s?j.x:j.y)&1)===0?"Serving from the right side.":"Serving from the left side."
-h=t.s
-j.ND(A.c([m,l],h),1000,A.c(["en","en"],h))}else{o=h==="jp_f"
-if(o||h==="jp_m"){a=((s?j.x:j.y)&1)===0?"right":"left"
+u6(a){var s,r,q,p,o,n,m,l,k,j,i=this,h="love",g={}
+i.ab4()
+i.ay.push(i.NC())
+g.a=!1
+i.aj(new A.aj7(g,i,a))
+g=g.a
+s=i.as==="A"
+r=s?i.x:i.y
+q=s?i.y:i.x
+if(r===q)p=(r===0?h:""+r)+" all"
+else{o=r===0?h:""+r
+n=q===0?h:""+q
+p=o+" "+n}m=g?"Service Over, "+p:p
+g=i.ax
+if(g==="en"){l=((s?i.x:i.y)&1)===0?"Serving from the right side.":"Serving from the left side."
+g=t.s
+i.ND(A.c([m,l],g),1000,A.c(["en","en"],g))}else{o=g==="jp_f"
+if(o||g==="jp_m"){a=((s?i.x:i.y)&1)===0?"right":"left"
 k=o?"female":"male"
-j.aas(m,"audio/"+a+"_"+k+".mp3")}else j.aar(A.c([m],t.s))}},
+j=a==="right"?"\u53f3\u30b3\u30fc\u30c8\u304b\u3089\u30b5\u30fc\u30d6\u3067\u3059":"\u5de6\u30b3\u30fc\u30c8\u304b\u3089\u30b5\u30fc\u30d6\u3067\u3059"
+i.aas(m,"audio/"+a+"_"+k+".mp3",j)}else i.aar(A.c([m],t.s))}},
 aaZ(){if(this.ay.length===0)return
 this.aj(new A.ajE(this))},
 a8Z(){var s=this.c
