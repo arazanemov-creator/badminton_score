@@ -40118,7 +40118,7 @@ A.HU(B.d6,q.ga5O(),t.H)
 return A.R(null,r)}})
 return A.S($async$uM,r)},
 a5P(){var s
-try{$.ane().qY("eval",["        (function() {\n          // \u7121\u97f3\u306eutterance\u3067TTS\u30a8\u30f3\u30b8\u30f3\u3092\u8d77\u52d5\u30fbvoices\u3092\u30ad\u30e3\u30c3\u30b7\u30e5\n          if (!window._ttsInitialized) {\n            window.speechSynthesis.getVoices();\n            window._ttsInitialized = true;\n          }\n        })();\n      "])}catch(s){}},
+try{$.ane().qY("eval",['        (function() {\n          // TTS\u30a8\u30f3\u30b8\u30f3\u8d77\u52d5\u30fbvoices\u30ad\u30e3\u30c3\u30b7\u30e5\n          if (!window._ttsInitialized) {\n            window.speechSynthesis.getVoices();\n            window._ttsInitialized = true;\n          }\n          // MP3\u30d5\u30a1\u30a4\u30eb\u3092\u30d7\u30ea\u30ed\u30fc\u30c9\u3057\u3066\u30d5\u30a7\u30fc\u30c9\u30a4\u30f3\u554f\u984c\u3092\u9632\u3050\n          var files = [\n            "audio/right_female.mp3",\n            "audio/left_female.mp3",\n            "audio/right_male.mp3",\n            "audio/left_male.mp3"\n          ];\n          files.forEach(function(f) {\n            var a = new Audio(f);\n            a.preload = "auto";\n            a.load();\n          });\n        })();\n      '])}catch(s){}},
 qy(){var s=0,r=A.T(t.H),q=this
 var $async$qy=A.U(function(a,b){if(a===1)return A.Q(b,r)
 for(;;)switch(s){case 0:s=3
