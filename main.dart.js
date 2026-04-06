@@ -40113,7 +40113,7 @@ q=s?l.y:l.x
 if(r===q)p=(r===0?k:""+r)+" all"
 else{o=r===0?k:""+r
 n=q===0?k:""+q
-p=o+" "+n}if(l.ax)m=((s?l.x:l.y)&1)===0?" Right side.":" Left side."
+p=o+" "+n}if(l.ax)m=((s?l.x:l.y)&1)===0?" Serving from the right side.":" Serving from the left side."
 else m=""
 l.aal((j?"Service Over, "+p:p)+m)},
 aaS(){if(this.ay.length===0)return
