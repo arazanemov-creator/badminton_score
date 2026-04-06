@@ -40118,7 +40118,7 @@ if(r===q)p=(r===0?k:""+r)+" all"
 else{o=r===0?k:""+r
 n=q===0?k:""+q
 p=o+" "+n}m=j?"Service Over, "+p:p
-if(l.ax)l.NB(A.c([m,((s?l.x:l.y)&1)===0?"Serving from the right side.":"Serving from the left side."],t.s),2500)
+if(l.ax)l.NB(A.c([m,((s?l.x:l.y)&1)===0?"Serving from the right side.":"Serving from the left side."],t.s),1500)
 else l.aam(A.c([m],t.s))},
 aaT(){if(this.ay.length===0)return
 this.aj(new A.ajz(this))},
