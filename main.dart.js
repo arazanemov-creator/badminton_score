@@ -7429,12 +7429,12 @@ _.ax="tts"
 _.ay="off"
 _.CW=_.ch=!1
 _.cx=!0
-_.dx=null
-_.dy=0
-_.fr=b
-_.fx=c
-_.fy=d
-_.go=e
+_.db=null
+_.dx=0
+_.dy=b
+_.fr=c
+_.fx=d
+_.fy=e
 _.c=_.a=null},
 aku:function aku(a){this.a=a},
 ajG:function ajG(a,b){this.a=a
@@ -40244,7 +40244,7 @@ if(q==null){q=A.a3(s.c,t.nH)
 s.e=q
 s=q}else s=q
 s.push(r)}else s.c.push(r)
-p.dx=A.apW(B.mM,new A.aku(p))},
+p.db=A.apW(B.mM,new A.aku(p))},
 l(){var s,r,q=this,p=$.d6.c_$
 p===$&&A.a()
 s=q.gLl()
@@ -40253,9 +40253,9 @@ if(r==null){r=A.a3(p.c,t.nH)
 p.e=r
 p=r}else p=r
 B.b.E(p,s)}else B.b.E(p.c,s)
-p=q.dx
+p=q.db
 if(p!=null)p.aZ(0)
-for(p=q.fy,p=new A.cB(p,p.r,p.e);p.u();){s=p.d
+for(p=q.fx,p=new A.cB(p,p.r,p.e);p.u();){s=p.d
 if(s!=null)s.aZ(0)}q.aK()},
 uT(){var s=0,r=A.T(t.H),q=this,p,o
 var $async$uT=A.U(function(a,b){if(a===1)return A.Q(b,r)
@@ -40316,12 +40316,12 @@ if(J.cy(r)<2)return
 q=J.b5(r,0)
 o=A.yR(J.b5(r,1),null)
 p=o==null?0:o
-if(p<=m.dy)return
-m.dy=p
+if(p<=m.dx)return
+m.dx=p
 if(m.cx)m.vs(q)
-else if(J.d(q,"UNDO")){if(m.fr.length!==0)m.ai(new A.ajD(m))}else m.q6(q)}catch(n){}},
+else if(J.d(q,"UNDO")){if(m.dy.length!==0)m.ai(new A.ajD(m))}else m.q6(q)}catch(n){}},
 a6c(){var s
-try{$.jM().i1("eval",["        (function() {\n          if (!window._audioCtx) {\n            window._audioCtx = new (window.AudioContext || window.webkitAudioContext)();\n            window._audioBuffers = {};\n          }\n          window.speechSynthesis.getVoices();\n          // Bluetooth\u30ea\u30e2\u30b3\u30f3\u306e\u30a4\u30d9\u30f3\u30c8\u691c\u77e5\n          if (!window._btDebugInit) {\n            window._btDebugInit = true;\n            var lastTime = 0;\n            var tapCount = 0;\n            var lastSide = '';\n            var tapTimer = null;\n            document.addEventListener('pointerdown', function(e) {\n              var info = 'pointerdown x=' + Math.round(e.clientX) + ' type=' + e.pointerType;\n              var el = document.getElementById('bt-debug');\n              if (el) el.textContent = info;\n              if (e.pointerType === 'touch') return;\n              var now = Date.now();\n              if (now - lastTime < 50) return; // 50ms\u4ee5\u5185\u306e\u9023\u7d9a\u3092\u7121\u8996\n              var side = e.clientX < window.innerWidth / 2 ? 'A' : 'B';\n              // 600ms\u4ee5\u5185\u306e\u540c\u50742\u30bf\u30c3\u30d7 \u2192 UNDO\n              if (side === lastSide && now - lastTime < 600) {\n                tapCount++;\n              } else {\n                tapCount = 1;\n              }\n              lastSide = side;\n              lastTime = now;\n              var capturedSide = side;\n              var capturedCount = tapCount;\n              var capturedTime = now;\n              if (tapTimer) clearTimeout(tapTimer);\n              tapTimer = setTimeout(function() {\n                tapTimer = null;\n                if (capturedCount >= 2) {\n                  window._btTrigger = { side: 'UNDO', time: capturedTime };\n                } else {\n                  window._btTrigger = { side: capturedSide, time: capturedTime };\n                }\n                tapCount = 0;\n              }, 600);\n            });\n            // \u30c7\u30d0\u30c3\u30b0\u8868\u793a\u8981\u7d20\u3092\u8ffd\u52a0\n            var el = document.createElement('div');\n            el.id = 'bt-debug';\n            el.style.cssText = 'position:fixed;top:0;left:0;right:0;text-align:center;background:rgba(0,0,0,0.8);color:yellow;font-size:18px;padding:4px;z-index:9999;';\n            el.textContent = '\u64cd\u4f5c\u5f85\u3061...';\n            document.body.appendChild(el);\n          }\n        })();\n      "])}catch(s){}},
+try{$.jM().i1("eval",["        (function() {\n          if (!window._audioCtx) {\n            window._audioCtx = new (window.AudioContext || window.webkitAudioContext)();\n            window._audioBuffers = {};\n          }\n          window.speechSynthesis.getVoices();\n          // Bluetooth\u30ea\u30e2\u30b3\u30f3\u306e\u30a4\u30d9\u30f3\u30c8\u691c\u77e5\n          if (!window._btDebugInit) {\n            window._btDebugInit = true;\n            var lastTime = 0;\n            var tapCount = 0;\n            var lastSide = '';\n            var tapTimer = null;\n            document.addEventListener('pointerdown', function(e) {\n              if (e.pointerType === 'touch') return;\n              var now = Date.now();\n              if (now - lastTime < 50) return; // 50ms\u4ee5\u5185\u306e\u9023\u7d9a\u3092\u7121\u8996\n              var side = e.clientX < window.innerWidth / 2 ? 'A' : 'B';\n              // 600ms\u4ee5\u5185\u306e\u540c\u50742\u30bf\u30c3\u30d7 \u2192 UNDO\n              if (side === lastSide && now - lastTime < 600) {\n                tapCount++;\n              } else {\n                tapCount = 1;\n              }\n              lastSide = side;\n              lastTime = now;\n              var capturedSide = side;\n              var capturedCount = tapCount;\n              var capturedTime = now;\n              if (tapTimer) clearTimeout(tapTimer);\n              tapTimer = setTimeout(function() {\n                tapTimer = null;\n                if (capturedCount >= 2) {\n                  window._btTrigger = { side: 'UNDO', time: capturedTime };\n                } else {\n                  window._btTrigger = { side: capturedSide, time: capturedTime };\n                }\n                tapCount = 0;\n              }, 600);\n            });\n\n          }\n        })();\n      "])}catch(s){}},
 OA(){var s
 if(this.CW)return
 this.CW=!0
@@ -40398,24 +40398,24 @@ a40(a){var s,r,q,p,o=this,n=a.b
 if(!n.j(0,B.b1)&&!n.j(0,B.bf))return!1
 if(a instanceof A.om)return!0
 if(!(a instanceof A.j3))return!0
-s=o.go
+s=o.fy
 r=s.h(0,n)
 q=(r==null?0:r)+1
 s.m(0,n,q)
-r=o.fy
+r=o.fx
 p=r.h(0,n)
 if(p!=null)p.aZ(0)
 if(q>=2){s.m(0,n,0)
-if(!o.cx&&o.fr.length!==0)o.ai(new A.ajE(o))}else r.m(0,n,A.c0(B.dd,new A.ajF(o,n)))
+if(!o.cx&&o.dy.length!==0)o.ai(new A.ajE(o))}else r.m(0,n,A.c0(B.dd,new A.ajF(o,n)))
 return!0},
 q6(a){var s=this,r={}
 if(s.cx)return
 s.OA()
-s.fr.push(s.NU())
+s.dy.push(s.NU())
 r.a=!1
 s.ai(new A.ajA(r,s,a))
 s.a_I(r.a)},
-abx(){if(this.fr.length===0)return
+abx(){if(this.dy.length===0)return
 this.ai(new A.akh(this))},
 a9u(){var s=this.c
 s.toString
@@ -40435,7 +40435,7 @@ if(a==="A")return b==="right"?s.e:s.f
 return b==="right"?s.r:s.w},
 NH(a,b,c){this.ai(new A.ajQ(this,a,b,c))},
 qK(a,b){var s=this
-s.fr.push(s.NU())
+s.dy.push(s.NU())
 s.ai(new A.ajR(s,a,b))},
 aaM(){var s=this.c
 s.toString
@@ -40470,7 +40470,7 @@ q=e.f
 p=e.e
 o=e.uS("A","left")
 s=A.i0(A.awi(e.uS("A","right"),p,B.iT,r,new A.akk(e),new A.akl(e),new A.akm(e),s,"A",o,q),1)
-r=e.fr.length!==0?e.gabw():d
+r=e.dy.length!==0?e.gabw():d
 q=e.gaaJ()
 p=e.gaaN()
 o=e.ax
@@ -40490,8 +40490,7 @@ o=A.nq(!q||e.ay!=="off"?B.cL:B.cb,1)
 n=A.fR(8)
 m=!q||e.ay!=="off"?B.jT:B.nn
 s=A.pw(B.cY,A.c([f,A.auo(0,A.fg(A.c([s,A.i0(A.hD(A.c([r,A.f_(A.dX(d,A.fg(A.c([B.SS,B.yv,A.ey(d,A.dX(d,A.hD(A.c([A.a1z(m,!q||e.ay!=="off"?B.cL:B.dm,d,13),B.yu,B.SR],g),B.cK,B.ab,0),B.p,d,d,new A.da(d,d,o,n,d,d,B.aD),d,d,d,B.Ed,d,d,d),B.O,!1,d,d,d,d,d,d,d,d,d,d,d,d,d,p,d,d,d)],g),B.aj,B.cK,B.ab),B.p,B.B,d,d,d,d,d,d,d,d,d),d,130),A.i0(A.ey(d,A.dX(d,B.zG,B.p,B.CI,d,d,d,d,d,d,d,d,d),B.O,!1,d,d,d,d,d,d,d,d,d,d,d,d,d,new A.aks(e),d,d,d),1)],g),B.P,B.ab,0),1),A.f_(A.hD(A.c([B.fP,A.f_(A.ey(d,A.dX(d,A.jW(A.cR(""+e.at+"\u70b9\u30e2\u30fc\u30c9",d,d,d,B.yV,d,d),d,d),B.p,B.B,d,d,d,d,d,d,d,d,d),B.O,!1,d,d,d,d,d,d,d,d,d,d,d,d,d,new A.akt(e),d,d,d),d,130),B.fP],g),B.P,B.ab,0),48,d)],g),B.aj,B.P,B.ab))],g),B.aa,B.cQ)}else s=f
-g=A.c([s],g)
-return new A.zy(A.apA(!0,A.pw(B.cY,g,B.aa,B.cQ),B.bb,!0),B.l,d)}}
+return new A.zy(A.apA(!0,A.pw(B.cY,A.c([s],g),B.aa,B.cQ),B.bb,!0),B.l,d)}}
 A.aku.prototype={
 $1(a){return this.a.a0g()},
 $S:80}
@@ -40510,7 +40509,7 @@ r.ay=q==null?"off":q},
 $S:0}
 A.ajD.prototype={
 $0(){var s=this.a
-return s.A4(s.fr.pop())},
+return s.A4(s.dy.pop())},
 $S:0}
 A.ajH.prototype={
 $1(a){return J.b5(a,"id")===this.a.ay},
@@ -40531,11 +40530,11 @@ $1(a){return'"'+a+'"'},
 $S:89}
 A.ajE.prototype={
 $0(){var s=this.a
-return s.A4(s.fr.pop())},
+return s.A4(s.dy.pop())},
 $S:0}
 A.ajF.prototype={
 $0(){var s=this.a,r=this.b
-s.go.m(0,r,0)
+s.fy.m(0,r,0)
 if(s.cx)s.vs(r.j(0,B.b1)?"A":"B")
 else if(r.j(0,B.b1))s.q6("A")
 else s.q6("B")},
@@ -40564,7 +40563,7 @@ s.as=o?"A":"B"}},
 $S:0}
 A.akh.prototype={
 $0(){var s=this.a
-return s.A4(s.fr.pop())},
+return s.A4(s.dy.pop())},
 $S:0}
 A.ajP.prototype={
 $1(a){var s=null,r=this.a
@@ -40587,7 +40586,7 @@ $0(){var s=this.a
 s.x=s.y=s.z=s.Q=0
 s.e=s.f=s.r=s.w=null
 s.as="A"
-B.b.Y(s.fr)
+B.b.Y(s.dy)
 s.cx=!0},
 $S:0}
 A.akb.prototype={
