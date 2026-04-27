@@ -40619,7 +40619,7 @@ s.x=s.y=0
 q=o?"A":"B"
 s.as=q
 p=++s.ay
-if(s.ch&&p%2===0){l=s.e
+if(s.ch&&p>1){l=s.e
 k=s.f
 s.e=s.r
 s.f=s.w
