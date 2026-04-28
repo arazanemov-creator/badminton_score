@@ -7439,7 +7439,8 @@ _.k2=b
 _.k3=c
 _.k4=d
 _.ok=e
-_.c=_.a=_.p1=null},
+_.p1=""
+_.c=_.a=_.p2=null},
 ajL:function ajL(a,b){this.a=a
 this.b=b},
 ajM:function ajM(a){this.a=a},
@@ -40352,20 +40353,23 @@ s.at=a.y
 s.ay=a.z},
 uV(a,b){if(this.as!==a)return!1
 return(((a==="A"?this.x:this.y)&1)===0?"right":"left")===b},
-a0k(){var s,r,q,p,o,n,m=this
+a0k(){var s,r,q,p,o,n,m,l,k=this
 try{s=$.jO().hs("eval",["        (function() {\n          if (!window._btTrigger) return null;\n          var t = window._btTrigger;\n          window._btTrigger = null;\n          return t.side + ',' + t.time;\n        })()\n      "])
 if(s==null)return
 r=A.c(J.eO(s).split(","),t.s)
 if(J.cz(r)<2)return
 q=J.b5(r,0)
-o=A.yU(J.b5(r,1),null)
-p=o==null?0:o
-if(p<=m.k1)return
-m.k1=p
-if(m.fy)m.vu(q)
-else if(J.d(q,"UNDO")){if(m.k2.length!==0)m.af(new A.ajI(m))}else m.A2(q)}catch(n){}},
+n=A.yU(J.b5(r,1),null)
+p=n==null?0:n
+m=k.k1
+if(p<=m)return
+o=p-m<600&&J.d(q,k.p1)
+k.k1=p
+k.p1=q
+if(k.fy)k.vu(q)
+else if(o){if(k.k2.length!==0)k.af(new A.ajI(k))}else k.A2(q)}catch(l){}},
 a6h(){var s
-try{$.jO().hs("eval",["        (function() {\n          if (!window._audioCtx) {\n            window._audioCtx = new (window.AudioContext || window.webkitAudioContext)();\n            window._audioBuffers = {};\n          }\n          window.speechSynthesis.getVoices();\n          // Bluetooth\u30ea\u30e2\u30b3\u30f3\u306e\u30a4\u30d9\u30f3\u30c8\u691c\u77e5\n          if (!window._btDebugInit) {\n            window._btDebugInit = true;\n            var lastTime = 0;\n            var tapCount = 0;\n            var lastSide = '';\n            var tapTimer = null;\n            document.addEventListener('pointerdown', function(e) {\n              // \u4e2d\u592e130px\u306f\u9664\u5916\n              var w = window.innerWidth;\n              var centerLeft = (w - 130) / 2;\n              var centerRight = centerLeft + 130;\n              if (e.clientX >= centerLeft && e.clientX <= centerRight) return;\n              // touch\u3082\u542b\u3081\u3066\u5168\u3066\u306epointerType\u3092\u51e6\u7406\n              // \u305f\u3060\u3057Flutter\u306eListener\u3068\u91cd\u8907\u3057\u306a\u3044\u3088\u3046preventDefault\n              var now = Date.now();\n              if (now - lastTime < 50) return; // 50ms\u4ee5\u5185\u306e\u9023\u7d9a\u3092\u7121\u8996\n              var side = e.clientX < window.innerWidth / 2 ? 'A' : 'B';\n              // 600ms\u4ee5\u5185\u306e\u540c\u50742\u30bf\u30c3\u30d7 \u2192 UNDO\n              if (side === lastSide && now - lastTime < 600) {\n                tapCount++;\n              } else {\n                tapCount = 1;\n              }\n              lastSide = side;\n              lastTime = now;\n              var capturedSide = side;\n              var capturedCount = tapCount;\n              var capturedTime = now;\n              if (tapTimer) clearTimeout(tapTimer);\n              tapTimer = setTimeout(function() {\n                tapTimer = null;\n                if (capturedCount >= 2) {\n                  window._btTrigger = { side: 'UNDO', time: capturedTime };\n                } else {\n                  window._btTrigger = { side: capturedSide, time: capturedTime };\n                }\n                tapCount = 0;\n              }, 600);\n            });\n\n          }\n        })();\n      "])}catch(s){}},
+try{$.jO().hs("eval",["        (function() {\n          if (!window._audioCtx) {\n            window._audioCtx = new (window.AudioContext || window.webkitAudioContext)();\n            window._audioBuffers = {};\n          }\n          window.speechSynthesis.getVoices();\n          // Bluetooth\u30ea\u30e2\u30b3\u30f3\u306e\u30a4\u30d9\u30f3\u30c8\u691c\u77e5\n          if (!window._btDebugInit) {\n            window._btDebugInit = true;\n            var lastTime = 0;\n            document.addEventListener('pointerdown', function(e) {\n              // \u4e2d\u592e130px\u306f\u9664\u5916\n              var w = window.innerWidth;\n              var centerLeft = (w - 130) / 2;\n              var centerRight = centerLeft + 130;\n              if (e.clientX >= centerLeft && e.clientX <= centerRight) return;\n              var now = Date.now();\n              if (now - lastTime < 50) return; // 50ms\u4ee5\u5185\u306e\u9023\u7d9a\u3092\u7121\u8996\n              lastTime = now;\n              var side = e.clientX < window.innerWidth / 2 ? 'A' : 'B';\n              // \u5373\u5ea7\u306b\u30c8\u30ea\u30ac\u30fc\u8a2d\u5b9a\uff08\u30c0\u30d6\u30eb\u30bf\u30c3\u30d7\u5224\u5b9a\u306fDart\u5074\u3067\uff09\n              window._btTrigger = { side: side, time: now };\n            });\n\n          }\n        })();\n      "])}catch(s){}},
 OE(){var s
 if(this.fx)return
 this.fx=!0
@@ -40454,8 +40458,8 @@ if(!o.fy&&o.k2.length!==0)o.af(new A.ajJ(o))}else r.m(0,n,A.c0(B.de,new A.ajK(o,
 return!0},
 A2(a){var s,r,q=this,p={}
 if(q.fy)return
-if(q.p1!=null){s=Date.now()
-r=q.p1
+if(q.p2!=null){s=Date.now()
+r=q.p2
 r.toString
 r=new A.ej(s,0,!1).xF(r)
 s=r}else s=!1
@@ -40485,15 +40489,15 @@ q=p.z
 p.z=p.Q
 p.Q=q
 p.cx=!p.cx}p.fy=!0
-p.p1=new A.ej(Date.now(),0,!1).A0(5e5)}},
+p.p2=new A.ej(Date.now(),0,!1).A0(5e5)}},
 abC(){if(this.k2.length===0)return
 this.af(new A.akn(this))},
 a9z(){var s=this.c
 s.toString
 A.qn(new A.ajV(this),s,t.z)},
 vu(a){var s,r,q,p=this
-if(p.p1!=null){s=Date.now()
-r=p.p1
+if(p.p2!=null){s=Date.now()
+r=p.p2
 r.toString
 r=new A.ej(s,0,!1).xF(r)
 s=r}else s=!1
@@ -40687,7 +40691,7 @@ s.ay=1
 s.cx=!1
 B.b.Y(s.k2)
 s.fy=!0
-s.p1=new A.ej(Date.now(),0,!1).A0(5e5)},
+s.p2=new A.ej(Date.now(),0,!1).A0(5e5)},
 $S:0}
 A.akh.prototype={
 $0(){var s=this.a
