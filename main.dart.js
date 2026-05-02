@@ -40586,8 +40586,7 @@ p=a2.CW
 if(p)o=a3
 else o=a2.e
 n=a2.uX("A","left")
-if(p)m=!1
-else m=a2.uX("A","right")
+m=a2.uX("A","right")
 l=a2.cx
 k=l?B.fx:B.fB
 j=p?a3:new A.akE(a2)
@@ -40608,8 +40607,7 @@ d=a2.r
 if(p)c=a3
 else c=a2.w
 b=a2.uX("B","right")
-if(p)a=!1
-else a=a2.uX("B","left")
+a=a2.uX("B","left")
 l=l?B.fB:B.fx
 p=p?a3:new A.akG(a2)
 a0=t.p
@@ -40685,13 +40683,13 @@ $S:0}
 A.ajQ.prototype={
 $0(){var s,r=this,q=r.b;++q.cy
 if(r.c==="A")if(q.as==="A"){++q.x
-s=q.e
+if(!q.CW){s=q.e
 q.e=q.f
-q.f=s}else{r.a.a=!0;++q.x
+q.f=s}}else{r.a.a=!0;++q.x
 q.as="A"}else if(q.as==="B"){++q.y
-s=q.r
+if(!q.CW){s=q.r
 q.r=q.w
-q.w=s}else{r.a.a=!0;++q.y
+q.w=s}}else{r.a.a=!0;++q.y
 q.as="B"}q.a0o()},
 $S:0}
 A.aky.prototype={
@@ -40764,11 +40762,10 @@ if(q.c==="right")s.r=r
 else s.w=r}},
 $S:0}
 A.ak7.prototype={
-$0(){var s,r,q=this.a,p=this.b
-q.as=p
-p=p==="A"
-s=((p?q.x:q.y)&1)===0?"right":"left"
-if(this.c!==s)if(p){r=q.e
+$0(){var s,r,q=this.a,p=q.as=this.b
+if(!q.CW){s=((p==="A"?q.x:q.y)&1)===0?"right":"left"
+s=this.c!==s}else s=!1
+if(s)if(p==="A"){r=q.e
 q.e=q.f
 q.f=r}else{r=q.r
 q.r=q.w
