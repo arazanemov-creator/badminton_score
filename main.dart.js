@@ -40956,8 +40956,10 @@ s.ad(new A.akK(s))
 s.of()},
 $S:0}
 A.akK.prototype={
-$0(){var s=this.a
-return s.at=s.at===21?11:21},
+$0(){var s=this.a,r=s.at
+if(r===11)r=15
+else r=r===15?21:11
+return s.at=r},
 $S:0}
 A.akP.prototype={
 $0(){return this.a.vD("B","right")},
@@ -41005,8 +41007,10 @@ s.ad(new A.akG(s))
 s.of()},
 $S:0}
 A.akG.prototype={
-$0(){var s=this.a
-return s.at=s.at===21?11:21},
+$0(){var s=this.a,r=s.at
+if(r===11)r=15
+else r=r===15?21:11
+return s.at=r},
 $S:0}
 A.qd.prototype={
 aq(){return new A.V4()},
