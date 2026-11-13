@@ -7405,7 +7405,7 @@ return A.R(null,r)}})
 return A.S($async$asT,r)},
 ayd(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o){return new A.UA(k,i,f,o,c,m,a,n,b,d,j,l,e,h,g,null)},
 aJm(a,b,c){var s,r,q,p=B.d.ja(a),o=A.apO(p," ",""),n=A.apO(o,"\u3000","").length
-if(n<=2)return p
+if(n<=4)return p
 s=B.c.ds(b/n,0,c)
 r=B.c.rt(n/2)
 if(B.c.ds(b/r,0,c/2)<=s)return p
